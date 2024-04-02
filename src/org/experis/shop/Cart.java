@@ -52,8 +52,7 @@ public class Cart {
                     String dimension = scan.nextLine();
 
                     System.out.print("Smart: ");
-                    boolean smart = scan.nextBoolean();
-                    //scan.nextLine();
+                    boolean smart = Boolean.parseBoolean(scan.nextLine());
 
                     Television television = new Television(name,brand,new BigDecimal(price),new BigDecimal(vat),new BigDecimal(dimension),smart);
                     cart[i] = television;
@@ -64,7 +63,7 @@ public class Cart {
                     String color = scan.nextLine();
 
                     System.out.print("Memory: ");
-                    boolean wireless = scan.nextBoolean();
+                    boolean wireless = Boolean.parseBoolean(scan.nextLine());
 
                     Headphones headphones = new Headphones(name,brand,new BigDecimal(price),new BigDecimal(vat),color,wireless);
                     cart[i] = headphones;
@@ -72,10 +71,13 @@ public class Cart {
             }
         }
 
-        for (int i = 0; i < cart.length; i++) {
-            System.out.println(cart[i].getDetails());
+        System.out.println("-------------------------------");
+        System.out.println("-----------SCONTRINO-----------");
+        System.out.println("-------------------------------");
+
+        for (Product product : cart) {
+            System.out.println(product.getDetails());
         }
-        System.out.println(Arrays.toString(cart));
 
         scan.close();
     }

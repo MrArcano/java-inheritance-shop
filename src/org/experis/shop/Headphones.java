@@ -12,4 +12,8 @@ public class Headphones extends Product{
         this.color = color;
         this.wireless = wireless;
     }
+
+    public String getDetails() {
+        return String.format("Codice: %08d\nName: %s\nBrand: %s\nPrice: %.2f\nVat: %.2f\nColor: %s\nisSmart: %b\n", getCode(), getName(), getBrand(), getPrice(), getVat(), color, wireless);
+    }
 }
