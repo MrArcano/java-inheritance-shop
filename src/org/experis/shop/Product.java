@@ -65,6 +65,10 @@ public class Product {
         this.vat = vat;
     }
 
+    public BigDecimal getFullPrice(){
+        return price.add(price.multiply(vat)).setScale(2, RoundingMode.HALF_EVEN);
+    }
+
     public BigDecimal getFullPrice(boolean value) {
         if(value){
             BigDecimal discount = BigDecimal.valueOf(0.02);
