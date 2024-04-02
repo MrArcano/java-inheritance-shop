@@ -65,16 +65,17 @@ public class Product {
         this.vat = vat;
     }
 
-
-    public BigDecimal getFullPrice() {
-        // price + price * vat
+    public BigDecimal getFullPrice(boolean value) {
+        if(value){
+            BigDecimal discount = BigDecimal.valueOf(0.02);
+            return price.add(price.multiply(vat)).multiply(BigDecimal.ONE.subtract(discount)).setScale(2, RoundingMode.HALF_EVEN);
+        }
         return price.add(price.multiply(vat)).setScale(2, RoundingMode.HALF_EVEN);
     }
 
     public String getDetails() {
         return String.format("Codice: %08d\nName: %s\nBrand: %s\nPrice: %.2f\nVat: %.2f\n", code, name, brand, price, vat);
     }
-
 
     // METODI
     private int generateCode() {

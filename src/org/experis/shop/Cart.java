@@ -6,13 +6,14 @@ import java.util.Scanner;
 
 public class Cart {
     public static void main(String[] args) {
-        //Product prod = new Product("Pera","Peranis", BigDecimal.valueOf(2.5), BigDecimal.valueOf(0.15));
+        boolean card = false;
 
-        //System.out.println(prod.getDetails());
+        Product[] cart = new Product[3];
+        cart[0] = new Smartphone("GalaxyS24","Samsung", new BigDecimal("550.50"),new BigDecimal("0.22"),123456789123456L,64);
+        cart[1] = new Television("MyTelevision69","MarcaCavallo", new BigDecimal("1550.50"),new BigDecimal("0.22"),new BigDecimal("48"),true);
+        cart[2] = new Headphones("Syneizer","MarcaCavallo", new BigDecimal("450.50"),new BigDecimal("0.22"),"Red",true);
 
-        //System.out.printf("Price: %.2f\n", prod.getPrice());
-        //System.out.printf("FullPrice: %.2f\n", prod.getFullPrice());
-
+        /*
         Scanner scan = new Scanner(System.in);
         System.out.print("Quanti prodotti vuoi inserire: ");
         int size = Integer.parseInt(scan.nextLine());
@@ -71,14 +72,24 @@ public class Cart {
             }
         }
 
-        System.out.println("-------------------------------");
-        System.out.println("-----------SCONTRINO-----------");
-        System.out.println("-------------------------------");
+         */
+
+        System.out.println("----------------------------------------");
+        System.out.println("-----------DETTAGLIO CARRELLO-----------");
+        System.out.println("----------------------------------------");
 
         for (Product product : cart) {
             System.out.println(product.getDetails());
         }
 
-        scan.close();
+        System.out.println("-----------------------------------------");
+        System.out.println("----------------SCONTRINO----------------");
+        System.out.println("-----------------------------------------");
+
+        for (Product product : cart) {
+            System.out.println(product.getName() + " - " + product.getFullPrice(card));
+        }
+
+        //scan.close();
     }
 }
